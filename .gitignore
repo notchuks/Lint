@@ -1,0 +1,16 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+/client
+
+# ui dependencies
+/ui/node_modules
+/ui/.env
+
+# production
+/ui/build
+
+# server dependencies
+/server/node_modules
+/server/.env
+/server/.dockerignore
+/server/Dockerfile
