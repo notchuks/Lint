@@ -3,7 +3,8 @@ import { Route, Routes, useNavigate, useParams, useLocation } from 'react-router
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import { UserPage, Landing, Sockets, OAuthLink, UserList, LandingNew, UserPageNew } from './components';
+import { UserPage, Landing, Sockets, OAuthLink, UserList, LandingNew, UserPageNew, NTable, TTable } from './components';
+import { Transactions } from './pages';
 import { AccountsProvider } from './services/accounts';
 import { InstitutionsProvider } from './services/institutions';
 import { ItemsProvider } from './services/items';
@@ -39,6 +40,7 @@ function App() {
                           <Route path="/oauth-link" element={<OAuthLink />} />
                           <Route path="/admin" element={<UserList />} />
                           <Route path="/usern" element={<UserPageNew />} />
+                          <Route path="/usert" element={<Transactions />} />
                         </Routes>
                       </AssetsProvider>
                     </CurrentUserProvider>

@@ -1,22 +1,125 @@
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 import React, { useMemo } from "react";
 import styled from "styled-components";
 
-import { Barchart, TTable } from ".";
+import { Barchart, NTable, TTable, User } from ".";
+import { formatDate, formatDateN } from "../util";
+import { SelectColumnFilter } from "./TTable";
 
 const Container = styled.div`
-  width: 1116px;
+  display: flex;
+  flex-direction: column;
+  width: 1151px;
   height: 100%;
-  padding: 10px;
+  overflow-y: hidden;
+`;
+
+const Overview = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100px;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-bottom: 1px solid gray;
+`;
+const H2 = styled.div`
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 20px;
+`;
+const P = styled.div``;
+
+const Main = styled.div`
+  height: 550px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30px;
+  padding-right: 30px;
+`;
+
+const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 751px;
+`;
+
+const FinanceContainer = styled.div`
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+`;
+
+const Finance = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 150px;
+  width: 170px;
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+  padding: 5px 25px;
+`;
+
+const Top = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Icon = styled.div`
+  height: 20px;
+  width: 20px;
+  // border-radius: 100%;
+  margin-right: 10px;
+`;
+
+const Text = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+const Middle = styled.div`
+  font-weight: 700;
+  font-size: 25px;
+  margin-top: 15px;
+`;
+
+const Bottom = styled.div`
+  margin-top: 10px;
+`;
+
+const Percent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 19px;
+  width: 47px;
+  border-radius: 10px;
+  background-color: ${props => props.color === "green" ? "#cbfaf2" : "#fcebe9"};// #fcebe9; // #cbfaf2
+`;
+
+const Ptext = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  color: ${props => props.color === "green" ? "#0cb43f" : "#ee270d"}; //#ee270d; // #0cb43f
+  font-weight: 700;
 `;
 
 const BarContainer = styled.div`
-  width: 60%;
-  height: 50%;
-  border: 1px solid #707070;
-  border-radius: 10px;
+  display: flex;
+  width: 650px;
+  height: 60%;
+  // border: 1px solid #707070;
+  // border-radius: 10px;
   font-size: 14px;
   position: relative;
-  padding-top: 15px;
+  // padding-top: 15px;
 `;
 
 const Txt = styled.div`
@@ -28,87 +131,85 @@ const Txt = styled.div`
   font-size: 17px;
 `;
 
+const TableContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  border-left: 1px solid gray;
+`;
+
 const getData = () => [
   {
-    name: "Jane Cooper",
-    email: "jane.cooper@example.com",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    status: "Active",
-    role: "Admin",
-    imgUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+    "name": "Touchstone Climbing",
+    "type": "place",
+    "date": "2022-09-29T23:00:00.000Z",
+    "category": "Recreation",
+    "amount": 78.5,
   },
   {
-    name: "Cody Fisher",
-    email: "cody.fisher@example.com",
-    title: "Product Directives Officer",
-    department: "Intranet",
-    status: "Active",
-    role: "Owner",
-    imgUrl:
-      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+    "name": "United Airlines",
+    "type": "special",
+    "date": "2022-09-29T23:00:00.000Z",
+    "category": "Travel",
+    "amount": -500,
   },
   {
-    name: "Esther Howard",
-    email: "esther.howard@example.com",
-    title: "Forward Response Developer",
-    department: "Directives",
-    status: "Active",
-    role: "Member",
-    imgUrl:
-      "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+    "name": "Starbucks",
+    "type": "place",
+    "date": "2022-09-28T23:00:00.000Z",
+    "category": "Food and Drink",
+    "amount": 4.33,
   },
   {
-    name: "Jenny Wilson",
-    email: "jenny.wilson@example.com",
-    title: "Central Security Manager",
-    department: "Program",
-    status: "Active",
-    role: "Member",
-    imgUrl:
-      "https://images.unsplash.com/photo-1498551172505-8ee7ad69f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+    "name": "McDonald's",
+    "type": "place",
+    "date": "2022-09-28T23:00:00.000Z",
+    "category": "Food and Drink",
+    "amount": 12,
   },
   {
-    name: "Kristin Watson",
-    email: "kristin.watson@example.com",
-    title: "Lean Implementation Liaison",
-    department: "Mobility",
-    status: "Active",
-    role: "Admin",
-    imgUrl:
-      "https://images.unsplash.com/photo-1532417344469-368f9ae6d187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+    "name": "SparkFun",
+    "type": "place",
+    "date": "2022-09-27T23:00:00.000Z",
+    "category": "Food and Drink",
+    "amount": 89.4,
   },
   {
-    name: "Cameron Williamson",
-    email: "cameron.williamson@example.com",
-    title: "Internal Applications Engineer",
-    department: "Security",
-    status: "Active",
-    role: "Member",
-    imgUrl:
-      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+    "name": "INTRST PYMNT",
+    "type": "special",
+    "date": "2022-09-26T23:00:00.000Z",
+    "category": "Transfer",
+    "amount": -4.22,
   },
 ];
+
 
 const Insights = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "Name",
+        Header: "Amount",
+        accessor: "amount",
+      },
+      {
+        Header: "Transaction",
         accessor: "name",
       },
       {
-        Header: "Title",
-        accessor: "title",
+        Header: "Category",
+        accessor: "category",
+        Filter: SelectColumnFilter,
+        filter: "includes",
       },
       {
-        Header: "Status",
-        accessor: "status",
-      },
-      {
-        Header: "Role",
-        accessor: "role",
+        Header: "Date",
+        accessor: "date",
       },
     ],
     []
@@ -116,14 +217,107 @@ const Insights = () => {
 
   const data = React.useMemo(() => getData(), []);
 
+  data.forEach(transaction => {
+    transaction.date = formatDateN(transaction.date);
+  });
+
+  console.log(data);
+
+  const username = "nnamdi"
+
   return (
     <div>
       <Container>
-        <BarContainer>
-          <Txt>Money Statistics</Txt>
-          <Barchart />
-        </BarContainer>
-        <TTable columns={columns} data={data} />
+        <User username={username} />
+        <Overview>
+          <H2>Overview</H2>
+          <P>Here's what's happening in your finances.</P>
+        </Overview>
+        <Main>
+          <Left>
+            <FinanceContainer>
+              <Finance>
+                <Top>
+                  <Icon>
+                    <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <circle id="myCircle" cx="0" cy="0" r="5" />
+                      </defs>
+                      <use x="5" y="5" href="#myCircle" fill="#92c1ec" />
+                    </svg>
+                  </Icon>
+                  <Text>Income</Text>
+                </Top>
+                <Middle>$235,572</Middle>
+                <Bottom>
+                  <Percent color={"green"}>
+                    <Ptext color={"green"}>
+                      15%
+                      <ChevronDownIcon  style={{ height: 15, width: 15 }} />
+                    </Ptext>
+                  </Percent>
+                </Bottom>
+              </Finance>
+              <Finance>
+                <Top>
+                  <Icon>
+                    <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <circle id="myCircle" cx="0" cy="0" r="5" />
+                        <pattern id="pattern_m9Ijq" patternUnits="userSpaceOnUse" width="1.5" height="1.5" patternTransform="rotate(45)">
+                          <line x1="0" y="0" x2="0" y2="1.5" stroke="#000000" stroke-width="1" />
+                        </pattern>
+                      </defs>
+                      <use x="5" y="5" href="#myCircle" fill="url('#pattern_m9Ijq')" />
+                    </svg>
+                  </Icon>
+                  <Text>Expenses</Text>
+                </Top>
+                <Middle>$183,241</Middle>
+                <Bottom>
+                  <Percent color={"red"}>
+                    <Ptext color={"red"}>
+                      5%
+                      <ChevronDownIcon  style={{ height: 15, width: 15 }} />
+                    </Ptext>
+                    
+                  </Percent>
+                </Bottom>
+              </Finance>
+              <Finance>
+                <Top>
+                  <Icon>
+                    <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <circle id="myCircle" cx="0" cy="0" r="5" />
+                      </defs>
+                      <use x="5" y="5" href="#myCircle" fill="#1d1b1b" />
+                    </svg>
+                  </Icon>
+                  <Text>Net Worth</Text>
+                </Top>
+                <Middle>$52,221</Middle>
+                <Bottom>
+                  <Percent color={"green"}>
+                    <Ptext color={"green"}>
+                      10%
+                      <ChevronDownIcon  style={{ height: 15, width: 15 }} />
+                    </Ptext>
+                  </Percent>
+                </Bottom>
+              </Finance>
+            </FinanceContainer>
+            <BarContainer>
+              <Txt>Money Statistics</Txt>
+              <Barchart />
+            </BarContainer>
+          </Left>
+          <Right>
+            <TableContainer>
+              <NTable transactions={data} />
+            </TableContainer>
+          </Right>
+        </Main>
       </Container>
     </div>
   );

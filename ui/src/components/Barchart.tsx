@@ -79,30 +79,48 @@ const data = [
 const Barchart = () => {
   return (
     <ResponsiveContainer>
-        <BarChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-            top: 5,
-            right: 30,
-            left: 0,
-            bottom: 5,
-            }}
-            barGap={"1%"}
-            barSize={10}
-        >
-            <CartesianGrid strokeDasharray="0" vertical={false} />
-            <Text />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend verticalAlign="top" align="right" height={36} iconType="circle" iconSize={12} wrapperStyle={{ display: "flex", alignItems: "start", justifyContent: "center", maxWidth: 200, borderRadius: 10 }} />
-            <Bar dataKey="income" fill="#1d1b1b" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="expenses" fill="#707070" radius={[4, 4, 0, 0]} />
-        </BarChart>
+      <BarChart
+        width={200} // 500
+        height={200} // 300
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 0,
+          bottom: 5,
+        }}
+        barGap={"1%"}
+        barSize={28}
+      >
+        <defs>
+          <pattern id="pattern_OEHpq" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+            <line x1="0" y="0" x2="0" y2="6" stroke="#000000" stroke-width="3" />
+          </pattern>
+        </defs>
+        <CartesianGrid strokeDasharray="0" vertical={false} />
+        <Text />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend
+          verticalAlign="top"
+          align="right"
+          height={36}
+          iconType="circle"
+          iconSize={12}
+          wrapperStyle={{
+            display: "flex",
+            alignItems: "start",
+            justifyContent: "center",
+            maxWidth: 200,
+            borderRadius: 10,
+          }}
+        />
+        <Bar dataKey="income" stackId="a" fill="#92c1ec" />
+        <Bar dataKey="expenses" stackId="a" fill="url(#pattern_OEHpq)" />
+      </BarChart>
     </ResponsiveContainer>
-  )
+  );
 }
 
 export default Barchart;

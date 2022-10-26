@@ -514,3 +514,77 @@ ErrorMessage
 }
 
 /* LandingNew */
+
+
+/* Table styling */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  display: table;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 10%;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 6px 0px; // 80px for left & right
+  outline: 0;
+  // border: 0;
+  font-size: 15px;
+  vertical-align: baseline;
+  background: transparent;
+  width: 1000px;
+  height: auto;
+}
+
+caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+}
+
+tr, th, td {
+  border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+thead {
+  background-color: rgb(228, 228, 228);
+}
+
+tbody {
+  tr {
+    border-bottom: 1px solid gray;
+    //width: 50%;
+    //text-align: center;
+  }
+}
+
+th:nth-child(3) {
+  text-align: justify;
+}
+
+th:nth-child(4) {
+  text-align: justify;
+}
+
+th:nth-child(5) {
+  text-align: left;
+}
+
+td:nth-child(1) {
+  width: 20%;
+  text-align: center;
+}
+
+td:nth-child(5) {
+  width: 15%;
+  text-align: left;
+}
+
+td:nth-child(3) {
+  // width: 10%;
+  text-align: justify;
+}
+
+td:nth-child(2) {
+  width: 4%;
+}

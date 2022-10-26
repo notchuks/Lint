@@ -62,6 +62,16 @@ export function formatDate(timestamp: string) {
 
   return '';
 }
+export function formatDateN(timestamp: string) {
+  if (timestamp) {
+    // slice will return the first 10 char(date)of timestamp
+    // coming in as: 2019-05-07T15:41:30.520Z
+    const [y, m, d] = timestamp.slice(2, 10).split('-');
+    return `${d}/${m}/${y}`;
+  }
+
+  return '';
+}
 
 /**
  * @desc Checks the difference between the current time and a provided time

@@ -29,3 +29,5 @@ export { default as UserPageNew } from './UserPageNew';
 export { default as Insights } from './Insights';
 export { default as Barchart } from './Barchart';
 export { default as TTable } from './TTable';
+export { default as User } from './User';
+export { default as NTable } from './NTable';

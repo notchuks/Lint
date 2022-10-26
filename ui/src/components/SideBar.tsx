@@ -9,8 +9,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
-  width: 250px;
+  height: 100%;
+  width: 215px;
   padding: 20px 0px;
   background-color: #1d1b1b;
   color: white;

@@ -5,8 +5,10 @@ import { SideBar, Insights } from ".";
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
+  flex-direction: row;
+  width: 1366px;
+  height: 100vh;
+  // overflow: hidden;
 `;
 
 const UserPageNew = () => {
