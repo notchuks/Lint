@@ -45,6 +45,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2022
+    },
     "extends": [
       "react-app",
       "react-app/jest"
@@ -63,6 +67,7 @@
     ]
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^5.41.0",
     "babel-plugin-styled-components": "^2.0.7"
   }
 }

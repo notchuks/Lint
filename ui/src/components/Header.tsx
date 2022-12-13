@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Login, Register } from ".";
+import mint from "../images/mint.png";
 
 const Container = styled.div`
   height: 50px;
@@ -12,7 +13,10 @@ const Container = styled.div`
   margin: 30px 0px;
   font-weight: 600;
 `;
-const Logo = styled.div``;
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const Links = styled.div`
   display: flex;
@@ -33,7 +37,10 @@ const Buttons = styled.div`
 const Header = () => {
   return (
     <Container>
-      <Logo>Lint</Logo>
+      <Logo>
+        <img src={mint} alt="mint" height={"25px"} width={"25px"} />
+        Lint
+      </Logo>
       <Links>
         <Link>About</Link>
         <Link>Product</Link>

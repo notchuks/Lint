@@ -28,6 +28,7 @@ const Login = () => {
   const { login } = useCurrentUser();
   const [show, setShow] = useState(false);
   const [value, setValue] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
     setShow(false);
@@ -54,6 +55,13 @@ const Login = () => {
               placeholder="Enter User Name"
               value={value}
               onChange={e => setValue(e.currentTarget.value)}
+            />
+            <TextInput
+              label=""
+              id="id-6"
+              placeholder="Enter Password"
+              value={password}
+              onChange={e => setPassword(e.currentTarget.value)}
             />
           </ModalBody>
         </>

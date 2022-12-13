@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const baseURL = "http://localhost:5000/";
-const baseURL = "http://localhost:5000"; // https://758b-102-89-23-85.eu.ngrok.io
+const baseURL = "https://3439-197-210-79-117.eu.ngrok.io"; // https://758b-102-89-23-85.eu.ngrok.io
 
 const server = axios.create({
   baseURL,

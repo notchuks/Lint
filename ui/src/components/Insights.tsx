@@ -248,7 +248,7 @@ const Insights = () => {
                   </Icon>
                   <Text>Income</Text>
                 </Top>
-                <Middle>$235,572</Middle>
+                <Middle>&#8358;235,572</Middle>
                 <Bottom>
                   <Percent color={"green"}>
                     <Ptext color={"green"}>
@@ -273,7 +273,7 @@ const Insights = () => {
                   </Icon>
                   <Text>Expenses</Text>
                 </Top>
-                <Middle>$183,241</Middle>
+                <Middle>&#8358;183,241</Middle>
                 <Bottom>
                   <Percent color={"red"}>
                     <Ptext color={"red"}>
@@ -296,7 +296,7 @@ const Insights = () => {
                   </Icon>
                   <Text>Net Worth</Text>
                 </Top>
-                <Middle>$52,221</Middle>
+                <Middle>&#8358;52,221</Middle>
                 <Bottom>
                   <Percent color={"green"}>
                     <Ptext color={"green"}>

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from "styled-components";
 
 import vercel from "../images/vercel.svg";
-
+import mint from "../images/mint.png";
 
 const Container = styled.div`
   display: flex;

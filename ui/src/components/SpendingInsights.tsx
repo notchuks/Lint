@@ -31,6 +31,7 @@ export default function SpendingInsights(props: Props) {
       }),
     [transactions]
   );
+  console.log(monthlyTransactions);
 
   // create category and name objects from transactions
 

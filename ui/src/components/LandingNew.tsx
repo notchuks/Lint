@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Header, Register } from ".";
 
 import pf from "../images/pf.jpg"
+import finance from "../images/finance.png"
 
 const Container = styled.div`
   max-width: 124rem; // from App styling
@@ -42,6 +43,8 @@ const Pic = styled.div`
 
 const Image = styled.img`
   object-fit: cover;
+  height: 400px;
+  width: 600px;
 `;
 
 const LandingNew = () => {
@@ -55,7 +58,7 @@ const LandingNew = () => {
               <Register name={name} />
           </Slogan>
           <Pic>
-              <Image src={pf} />
+              <Image src={finance} />
           </Pic>
       </Main>
     </Container>

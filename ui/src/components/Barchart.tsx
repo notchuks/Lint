@@ -117,6 +117,7 @@ const Barchart = () => {
           }}
         />
         <Bar dataKey="income" stackId="a" fill="#92c1ec" />
+        <Bar dataKey="amt" stackId="a" fill="#1d1b1b" />
         <Bar dataKey="expenses" stackId="a" fill="url(#pattern_OEHpq)" />
       </BarChart>
     </ResponsiveContainer>

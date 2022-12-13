@@ -39,8 +39,8 @@ function App() {
                           <Route path="/user/:userId" element={<UserPage />} />
                           <Route path="/oauth-link" element={<OAuthLink />} />
                           <Route path="/admin" element={<UserList />} />
-                          <Route path="/usern" element={<UserPageNew />} />
-                          <Route path="/usert" element={<Transactions />} />
+                          <Route path="/users/:userId" element={<UserPageNew />} />
+                          <Route path="/users/:userId/transactions" element={<Transactions />} />
                         </Routes>
                       </AssetsProvider>
                     </CurrentUserProvider>
